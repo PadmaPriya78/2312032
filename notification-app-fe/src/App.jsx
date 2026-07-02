@@ -1,3 +1,7 @@
-export default function App() {
-  return "Notifications App";
+import Home from "./pages/Home";
+
+function App() {
+  return <Home />;
 }
+
+export default App;
