@@ -1,10 +1,11 @@
-export async function Log(stack, level, packageName, message) {
+export async function Log(token, stack, level, packageName, message) {
     const response = await fetch(
         "http://4.224.186.213/evaluation-service/logs",
         {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
             },
             body: JSON.stringify({
                 stack,
@@ -14,4 +15,6 @@ export async function Log(stack, level, packageName, message) {
             })
         }
     );
+
+    const data = await response.json();
 }
